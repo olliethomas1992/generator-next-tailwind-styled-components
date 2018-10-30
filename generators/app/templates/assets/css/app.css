@@ -1,0 +1,7 @@
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+@import './nprogress.css';
+
+/** Remember to exclude styles from PurgeCss */

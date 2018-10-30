@@ -1,0 +1,6 @@
+.env
+.env.production
+.next
+node_modules
+.idea
+notes.txt

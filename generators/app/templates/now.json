@@ -1,0 +1,5 @@
+{
+	"name": "<%= title %>",
+	"dotenv": ".env.production",
+	"type": "npm"
+}
