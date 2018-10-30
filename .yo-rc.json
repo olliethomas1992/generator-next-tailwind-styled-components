@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Ollie Thomas",
+      "authorEmail": "ollie.thomas1992@gmail.com",
+      "authorUrl": "olliethomas.co.uk"
+    }
+  }
+}
