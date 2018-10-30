@@ -1,11 +1,11 @@
 # generator-next-tailwind-styled-components [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > Generates a Next Js app with tailwind, styled components and other useful tools
 
-## Installation
+<!-- ## Installation
 
 First, install [Yeoman](http://yeoman.io) and generator-next-tailwind-styled-components using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
-<!-- ```bash
+```bash
 npm install -g yo
 npm install -g generator-next-tailwind-styled-components
 ```
