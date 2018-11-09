@@ -189,6 +189,10 @@ module.exports = class extends Generator {
 
     _writingComponents() {
         this.fs.copy(
+            this.templatePath('components/global/Favicon.js'),
+            this.destinationPath('components/global/Favicon.js')
+        );
+        this.fs.copy(
             this.templatePath('components/global/Navigation.js'),
             this.destinationPath('components/global/Navigation.js')
         );
