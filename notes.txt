@@ -2,7 +2,6 @@
 
 /**
 	TODO:
-	-	Clean up postcss stuff as its not needed
 	-	Better defaults for setup process
 
 	RE-FACTOR:

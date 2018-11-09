@@ -7,12 +7,14 @@ module.exports = class extends Generator {
             {
                 type: 'input',
                 name: 'title',
-                message: 'What is the name of your project?'
+                message: 'What is the name of your project?',
+                default: this.appname
             },
             {
                 type: 'input',
                 name: 'description',
-                message: 'What is the description of your project?'
+                message: 'What is the description of your project?',
+                default: `${this.appname} Project`
             }
         ]);
     }
