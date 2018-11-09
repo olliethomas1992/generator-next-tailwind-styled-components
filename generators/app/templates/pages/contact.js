@@ -5,7 +5,7 @@ const Title = styled.h1`
 	${tw` text-blue md:text-green lg:text-red `}
 `
 
-class Index extends Component {
+class Contact extends Component {
 
 	static async getInitialProps () {
 
@@ -14,10 +14,10 @@ class Index extends Component {
 	render () {
 		return (
 			<>
-				<Title>Welcome to <%= title %></Title>
+				<Title>Contact Page</Title>
 			</>
 		)
 	}
 }
 
-export default Index;
+export default Contact;

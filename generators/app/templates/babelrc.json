@@ -4,16 +4,29 @@
 		"@babel/preset-env",
 		"@babel/preset-react"
 	],
-	"plugins": [
-		"tailwind-components",
-		[
-			"babel-plugin-styled-components",
-			{
-				"ssr": true,
-				"displayName": true,
-				"preprocess": true,
-				"pure": true
-			}
-		]
-	]
+	"env": {
+		"production": {
+			"plugins": [
+				[
+					"emotion",
+					{
+						"hoist": true
+					}
+				],
+				"tailwind-components"
+			]
+		},
+		"development": {
+			"plugins": [
+				[
+					"emotion",
+					{
+						"sourceMap": true,
+						"autoLabel": true
+					}
+				],
+				"tailwind-components"
+			]
+		}
+	}
 }

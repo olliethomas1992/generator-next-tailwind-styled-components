@@ -1,35 +1,24 @@
-import "../assets/css/app.css";
 import App, { Container } from "next/app";
-import Router from "next/router";
 import Head from 'next/head';
 import getConfig from 'next/config';
-import { ThemeProvider } from 'styled-components';
-import NProgress from 'nprogress';
-import { createGlobalStyle } from "styled-components";
-import styledNormalize from "styled-normalize";
-
+import styled from "react-emotion";
+import { injectGlobal } from 'emotion'
+import { ThemeProvider } from 'emotion-theming';
+import emotionNormalize from 'emotion-normalize';
 import theme from '../tailwind';
+import Nprogress from '../components/global/Nprogress';
+import Navigation from '../components/global/Navigation';
 // import Favicon from '../global/Favicon';
+
+const AppContainer = styled.div`
+	${tw` p-4 `}
+`
 
 const { publicRuntimeConfig: config } = getConfig();
 
-/* Next Router Hooks
----------------------------------------------------- */
-Router.events.on('routeChangeStart', () => {
-	NProgress.start();
-});
-
-Router.events.on('routeChangeComplete', () => {
-	NProgress.done();
-});
-
-Router.events.on('routeChangeError', () => {
-	NProgress.done();
-});
-
-const GlobalStyle = createGlobalStyle`
-	${styledNormalize}
-	
+injectGlobal`
+	${emotionNormalize}
+	${Nprogress(theme)}
 	body {
 
 	}
@@ -58,9 +47,13 @@ class <%= appName %> extends App {
 				<Head>
 					<title><%= title %></title>
 				</Head>
-				<GlobalStyle />
 				<ThemeProvider theme={theme}>
-					<Component {...pageProps} />
+					<>
+						<Navigation />
+						<AppContainer>
+							<Component {...pageProps} />
+						</AppContainer>
+					</>
 				</ThemeProvider>
 			</Container>
 		);

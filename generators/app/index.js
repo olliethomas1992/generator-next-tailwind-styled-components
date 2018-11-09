@@ -22,7 +22,6 @@ module.exports = class extends Generator {
         this._writingYarnInstallPackages();
         this._writingBabelRc();
         this._writingTailwind();
-        this._writingPostCssConfig();
         this._writingNowJson();
         this._writingNextConfig();
         this._writingNotesTxt();
@@ -30,8 +29,9 @@ module.exports = class extends Generator {
         this._writingEnvFiles();
         this._writingFavicons();
         this._writingPages();
-        this._writingCss();
+        this._writingHelperFiles();
         this._writingServerFile();
+        this._writingComponents();
     }
 
     _writingPackageJSON() {
@@ -51,9 +51,13 @@ module.exports = class extends Generator {
     _writingYarnInstallPackages() {
         this.yarnInstall([
             '@zeit/next-css',
-            'babel-plugin-styled-components',
+            'babel-plugin-emotion',
             'convict',
             'dotenv',
+            'emotion',
+            'emotion-normalize',
+            'emotion-server',
+            'emotion-theming',
             'express',
             'isomorphic-unfetch',
             'lru-cache',
@@ -62,18 +66,14 @@ module.exports = class extends Generator {
             'purgecss-webpack-plugin',
             'react',
             'react-dom',
+            'react-emotion',
             'react-responsive',
-            'react-sizeme',
-            'styled-components',
-            'styled-normalize'
+            'react-sizeme'
         ]);
 
         this.yarnInstall(
             [
-                'autoprefixer',
                 'babel-plugin-tailwind-components',
-                'cssnano',
-                'glob-all',
                 'next-fonts',
                 'next-images',
                 'tailwindcss'
@@ -90,13 +90,6 @@ module.exports = class extends Generator {
         this.fs.copy(
             this.templatePath('tailwind.js'),
             this.destinationPath('tailwind.js')
-        );
-    }
-
-    _writingPostCssConfig() {
-        this.fs.copy(
-            this.templatePath('postcss.config.js'),
-            this.destinationPath('postcss.config.js')
         );
     }
 
@@ -149,6 +142,18 @@ module.exports = class extends Generator {
             }
         );
 
+        // About
+        this.fs.copyTpl(
+            this.templatePath('pages/about.js'),
+            this.destinationPath('pages/about.js')
+        );
+
+        // Contact
+        this.fs.copyTpl(
+            this.templatePath('pages/contact.js'),
+            this.destinationPath('pages/contact.js')
+        );
+
         // _App
         this.fs.copyTpl(
             this.templatePath('pages/_app.js'),
@@ -168,19 +173,27 @@ module.exports = class extends Generator {
         );
     }
 
-    _writingCss() {
+    _writingServerFile() {
+        this.fs.copy(this.templatePath('server.js'), this.destinationPath('server.js'));
+    }
+
+    _writingHelperFiles() {
+        // CSS
         this.fs.copy(
-            this.templatePath('assets/css/app.css'),
-            this.destinationPath('assets/css/app.css')
-        );
-        this.fs.copy(
-            this.templatePath('assets/css/nprogress.css'),
-            this.destinationPath('assets/css/nprogress.css')
+            this.templatePath('helpers/css.js'),
+            this.destinationPath('helpers/css.js')
         );
     }
 
-    _writingServerFile() {
-        this.fs.copy(this.templatePath('server.js'), this.destinationPath('server.js'));
+    _writingComponents() {
+        this.fs.copy(
+            this.templatePath('components/global/Navigation.js'),
+            this.destinationPath('components/global/Navigation.js')
+        );
+        this.fs.copy(
+            this.templatePath('components/global/Nprogress.js'),
+            this.destinationPath('components/global/Nprogress.js')
+        );
     }
 
     install() {
