@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import styled from "react-emotion";
+import styled from "@emotion/styled";
 
 const Title = styled.h1`
 	${tw` text-blue md:text-green lg:text-red `}

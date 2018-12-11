@@ -1,6 +1,6 @@
 import NProgress from 'nprogress';
 import Router from "next/router";
-import { css } from 'emotion'
+import { Global, css } from '@emotion/core'
 
 Router.events.on('routeChangeStart', () => {
 	NProgress.start();
@@ -14,14 +14,14 @@ Router.events.on('routeChangeError', () => {
 	NProgress.done();
 });
 
-const ProgressBar = (theme) => css`
+const Nprogress = () => (<Global styles={theme => css`
 	/* Make clicks pass-through */
 	#nprogress {
 		pointer-events: none;
 	}
 
 	#nprogress .bar {
-		background: ${ theme.colors.secondary};
+		background: ${ theme.colors.primary};
 
 		position: fixed;
 		z-index: 1031;
@@ -39,7 +39,7 @@ const ProgressBar = (theme) => css`
 		right: 0px;
 		width: 100px;
 		height: 100%;
-		box-shadow: 0 0 10px ${ theme.colors.secondary}, 0 0 5px ${theme.colors.secondary};
+		box-shadow: 0 0 10px ${ theme.colors.primary}, 0 0 5px ${theme.colors.primary};
 		opacity: 1.0;
 
 		-webkit-transform: rotate(3deg) translate(0px, -4px);
@@ -62,8 +62,8 @@ const ProgressBar = (theme) => css`
 		box-sizing: border-box;
 
 		border: solid 2px transparent;
-		border-top-color: ${ theme.colors.secondary};
-		border-left-color: ${ theme.colors.secondary};
+		border-top-color: ${ theme.colors.primary};
+		border-left-color: ${ theme.colors.primary};
 		border-radius: 50%;
 
 		-webkit-animation: nprogress-spinner 400ms linear infinite;
@@ -88,6 +88,6 @@ const ProgressBar = (theme) => css`
 		0%   { transform: rotate(0deg); }
 		100% { transform: rotate(360deg); }
 	}
-`;
+`} />);
 
-export default ProgressBar;
+export default Nprogress;

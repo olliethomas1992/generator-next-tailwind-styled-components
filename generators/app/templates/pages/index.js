@@ -1,5 +1,7 @@
+/** @jsx jsx */
 import { Component } from 'react';
-import styled from "react-emotion";
+import { css, jsx } from '@emotion/core'
+import styled from "@emotion/styled";
 
 const Title = styled.h1`
 	${tw` text-blue md:text-green lg:text-red `}

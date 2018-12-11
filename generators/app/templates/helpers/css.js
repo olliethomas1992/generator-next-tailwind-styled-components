@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import theme from '../tailwind';
 
 export const media = Object.keys(theme.views).reduce(

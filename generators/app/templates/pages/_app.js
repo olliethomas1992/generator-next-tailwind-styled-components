@@ -1,11 +1,12 @@
+/** @jsx jsx */
 import App, { Container } from "next/app";
 import Head from 'next/head';
 import getConfig from 'next/config';
-import styled from "react-emotion";
-import { injectGlobal } from 'emotion';
+import styled from "@emotion/styled";
+import { Global, css, jsx } from '@emotion/core'
 import { ThemeProvider } from 'emotion-theming';
-import emotionNormalize from 'emotion-normalize';
 import theme from '../tailwind';
+import normalize from '../components/global/normalize';
 import Nprogress from '../components/global/Nprogress';
 import Navigation from '../components/global/Navigation';
 // import Favicon from '../components/global/Favicon';
@@ -16,12 +17,8 @@ const AppContainer = styled.div`
 
 const { publicRuntimeConfig: config } = getConfig();
 
-injectGlobal`
-	${emotionNormalize}
-	${Nprogress(theme)}
-	body {
-
-	}
+const globalStyles = theme => css`
+	${normalize}
 `;
 
 class <%= appName %> extends App {
@@ -50,6 +47,8 @@ class <%= appName %> extends App {
 				</Head>
 				<ThemeProvider theme={theme}>
 					<>
+						<Global styles={globalStyles} />
+						<Nprogress />
 						<Navigation />
 						<AppContainer>
 							<Component {...pageProps} />

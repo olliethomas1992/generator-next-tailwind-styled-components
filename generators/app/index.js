@@ -52,23 +52,20 @@ module.exports = class extends Generator {
 
     _writingYarnInstallPackages() {
         this.yarnInstall([
-            '@zeit/next-css',
+            '@emotion/core',
+            '@emotion/styled',
             'babel-plugin-emotion',
             'convict',
             'dotenv',
-            'emotion',
-            'emotion-normalize',
-            'emotion-server',
             'emotion-theming',
             'express',
             'isomorphic-unfetch',
             'lru-cache',
             'next',
+            'normalize-css',
             'nprogress',
-            'purgecss-webpack-plugin',
             'react',
             'react-dom',
-            'react-emotion',
             'react-responsive',
             'react-sizeme'
         ]);
@@ -199,6 +196,10 @@ module.exports = class extends Generator {
         this.fs.copy(
             this.templatePath('components/global/Nprogress.js'),
             this.destinationPath('components/global/Nprogress.js')
+        );
+        this.fs.copy(
+            this.templatePath('components/global/normalize.js'),
+            this.destinationPath('components/global/normalize.js')
         );
     }
 

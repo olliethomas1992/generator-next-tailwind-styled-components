@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styled from "react-emotion";
+import styled from "@emotion/styled";
 
 const Navigation = styled.nav`
 	${tw` flex items-center p-6 shadow `}
